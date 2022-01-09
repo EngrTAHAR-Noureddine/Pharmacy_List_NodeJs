@@ -13,7 +13,9 @@ router.post('/',(req,res)=>{
         photoUser: req.body.photoUser,
         typeUser: req.body.typeUser,
         consultingUser: req.body.consultingUser,
-        phoneUser: req.body.phoneUser
+        phoneUser: req.body.phoneUser,
+        emailUser: req.body.emailUser,
+        passwordUser : req.body.passwordUser
     });
     newUser.save().then(user=>res.json(user));
 });
