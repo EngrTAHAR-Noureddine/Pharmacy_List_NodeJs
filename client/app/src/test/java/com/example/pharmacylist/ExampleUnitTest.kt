@@ -1,4 +1,4 @@
-package com.example.smartpharm
+package com.example.pharmacylist
 
 import org.junit.Test
 
