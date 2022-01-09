@@ -1,8 +1,8 @@
-package com.example.smartpharm.login
+package com.example.pharmacylist.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.smartpharm.R
+import com.example.pharmacylist.R
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
