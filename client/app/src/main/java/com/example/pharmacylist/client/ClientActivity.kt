@@ -1,10 +1,10 @@
-package com.example.smartpharm.client
+package com.example.pharmacylist.client
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.example.smartpharm.R
+import com.example.pharmacylist.R
 import kotlinx.android.synthetic.main.activity_client.*
 
 
