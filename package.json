@@ -1,0 +1,19 @@
+{
+  "name": "pharmacy_list",
+  "version": "1.0.0",
+  "description": "Server of application pharmacy list",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EngrTAHAR-Noureddine/Pharmacy_List_NodeJs.git"
+  },
+  "author": "TAHAR Noureddine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EngrTAHAR-Noureddine/Pharmacy_List_NodeJs/issues"
+  },
+  "homepage": "https://github.com/EngrTAHAR-Noureddine/Pharmacy_List_NodeJs#readme"
+}
