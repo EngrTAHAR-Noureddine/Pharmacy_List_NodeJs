@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smartpharm">
+    package="com.example.pharmacylist">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo_smart_pharm"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/logo_smart_pharm_round"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartPharm">
+        android:theme="@style/Theme.PharmacyList">
         <activity
-            android:name=".pharmacist.PharmacistActivity"
+            android:name="com.example.pharmacylist.client.ClientActivity"
             android:exported="true" />
         <activity
-            android:name=".client.ClientActivity"
+            android:name="com.example.pharmacylist.login.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".login.LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
+            android:name="com.example.pharmacylist.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
