@@ -13,8 +13,8 @@ const UserSchema = new Schema({
         required:true
     },
     photoUser:{
-        data: Buffer,
-        contentType: String
+        type: String,
+        required:true
     },
     typeUser:{
         type:String,

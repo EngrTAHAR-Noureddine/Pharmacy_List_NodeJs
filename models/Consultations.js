@@ -12,8 +12,8 @@ const ConsultationSchema = new Schema({
         required:true
     },
     namePharmacy:{
-        data: Buffer,
-        contentType: String
+        type:String,
+        required:true
     },
     locationPharmacy:{
         type:String,
