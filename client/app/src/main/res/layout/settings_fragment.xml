@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings.SettingsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FF5900">
+
+        <!--
+        dir juste structure comme ana dert fi login sans style juste structure , when structured styliha be les coleurs et font family ...etc
+          style it like Settings of client in figma
+          madirch bottom Navigation Bar ok ana derteha
+        -->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

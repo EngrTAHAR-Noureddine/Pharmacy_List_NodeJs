@@ -1,3 +1,36 @@
 <resources>
-    <string name="app_name">PharmacyList</string>
+
+    <string name="app_name">SmartPharm</string>
+
+    <!-- Pour Login Fragment -->
+    <string name="big_logo" >big Logo</string>
+    <string name="smart_pharm">Smart Pharm</string>
+    <string name="champs_adremail_text">Adresse e-mail</string>
+    <string name="champs_adremail_Hint">E-mail...</string>
+    <string name="champs_password_text">Mot de passe</string>
+    <string name="champs_password_Hint">Mot de passe...</string>
+    <string name="champs_btn_facebook">Connecter avec Facebook</string>
+    <string name="champs_btn_google">Connecter avec Google</string>
+    <string name="champs_btn_logIn">Connexion</string>
+    <string name="champs_forgetPassword">Mot de passe oublié ?</string>
+    <string name="champs_connect_with">ou connecter par:</string>
+
+    <string name="champs_editprof">Modifier le profil </string>
+    <string name="champs_comandes">Mes commandes  </string>
+    <string name="champs_mespharms">Mes Pharmacies   </string>
+    <string name="champs_parametres">Paramètres   </string>
+    <string name="Rechercher_placeholder">Rechercher...</string>
+    <string name="todo">TODO</string>
+    <string name="popmenu_unselected">Ville</string>
+    <string name="button_Filter">Filter</string>
+    <string name="resultat">Resultat: 10</string>
+    <string name="text_pharmacy_name">Pharmacie El-Hanaa</string>
+    <string name="text_pharmacy_location">Oued Smar-El Harrach-Alger</string>
+    <string name="description_arrow_forward">arrow forward</string>
+    <string name="description_pharmacy_icon">pharmacy Icon</string>
+    <string name="acceuil">Acceuil</string>
+    <string name="commandes">Commandes</string>
+    <string name="param_tre">Paramètre</string>
+
+
 </resources>

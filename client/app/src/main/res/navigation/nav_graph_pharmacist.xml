@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_pharmacist"
+    app:startDestination="@id/destination_Pharmacy_Home">
+
+    <fragment
+        android:id="@+id/destination_Pharmacy_Home"
+        android:name="com.example.smartpharm.pharmacist.home.PharmacistHomeFragment"
+        android:label="pharmacist_home_fragment"
+        tools:layout="@layout/pharmacist_home_fragment" >
+        <action
+            android:id="@+id/to_Pharmacy_Order_Detail"
+            app:destination="@id/destination_Pharmacy_Order_Detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_Pharmacy_Medications_List"
+        android:name="com.example.smartpharm.pharmacist.medication.MedicationListFragment"
+        android:label="medication_list_fragment"
+        tools:layout="@layout/medication_list_fragment" />
+    <fragment
+        android:id="@+id/destination_Pharmacy_Order_Detail"
+        android:name="com.example.smartpharm.pharmacist.order_detail.OderDetailFragment"
+        android:label="oder_detail_fragment"
+        tools:layout="@layout/oder_detail_fragment" />
+    <fragment
+        android:id="@+id/destination_Pharmacy_Settings"
+        android:name="com.example.smartpharm.Settings.SettingsFragment"
+        android:label="settings_fragment"
+        tools:layout="@layout/settings_fragment" />
+</navigation>
