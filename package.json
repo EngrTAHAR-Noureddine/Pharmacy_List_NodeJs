@@ -4,7 +4,7 @@
   "description": "Server of application pharmacy list",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/EngrTAHAR-Noureddine/Pharmacy_List_NodeJs/issues"
   },
-  "homepage": "https://github.com/EngrTAHAR-Noureddine/Pharmacy_List_NodeJs#readme"
+  "homepage": "https://github.com/EngrTAHAR-Noureddine/Pharmacy_List_NodeJs#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "config": "^3.3.6",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.5"
+  }
 }
