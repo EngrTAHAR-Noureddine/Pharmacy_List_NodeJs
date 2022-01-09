@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/destination_Client_Home"
-        android:name="com.example.smartpharm.client.home.ClientHomeFragment"
+        android:name="com.example.pharmacylist.client.home.ClientHomeFragment"
         android:label="client_home_fragment"
         tools:layout="@layout/client_home_fragment" >
         <action
@@ -15,35 +15,17 @@
             app:destination="@id/destination_Client_Pharmacy_Detail" />
     </fragment>
     <fragment
-        android:id="@+id/destination_Client_Orders"
-        android:name="com.example.smartpharm.client.demande_order.DemandeOrderFragment"
-        android:label="demande_order_fragment"
-        tools:layout="@layout/demande_order_fragment" />
-    <fragment
         android:id="@+id/destination_Client_List_Orders"
-        android:name="com.example.smartpharm.client.orders.ListOrdersFragment"
+        android:name="com.example.pharmacylist.client.consultations.ListConsultationsFragment"
         android:label="list_orders_fragment"
-        tools:layout="@layout/list_orders_fragment" />
+        tools:layout="@layout/list_consultations_fragment" />
     <fragment
         android:id="@+id/destination_Client_Pharmacy_Detail"
-        android:name="com.example.smartpharm.client.pharmacist_detail.PharmacistDetailFragment"
+        android:name="com.example.pharmacylist.client.pharmacist_detail.PharmacistDetailFragment"
         android:label="pharmacist_detail_fragment"
         tools:layout="@layout/pharmacist_detail_fragment" >
         <action
-            android:id="@+id/to_Client_MedicationsList"
-            app:destination="@id/destination_Client_MedicationsList" />
-        <action
-            android:id="@+id/to_Client_Order"
-            app:destination="@id/destination_Client_Orders" />
+            android:id="@+id/action_destination_Client_Pharmacy_Detail_to_destination_Client_Home"
+            app:destination="@id/destination_Client_Home" />
     </fragment>
-    <fragment
-        android:id="@+id/destination_Client_MedicationsList"
-        android:name="com.example.smartpharm.client.pharmacist_detail.medications.MedicationsListFragment"
-        android:label="medications_list_fragment"
-        tools:layout="@layout/medications_list_fragment" />
-    <fragment
-        android:id="@+id/destination_Settings"
-        android:name="com.example.smartpharm.Settings.SettingsFragment"
-        android:label="settings_fragment"
-        tools:layout="@layout/settings_fragment" />
 </navigation>
