@@ -1,4 +1,4 @@
-package com.example.smartpharm.client.home
+package com.example.pharmacylist.client.home
 
 
 import android.os.Bundle
@@ -9,10 +9,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.smartpharm.R
-import com.example.smartpharm.database.smartDataBase
-import com.example.smartpharm.databinding.ClientHomeFragmentBinding
-import com.example.smartpharm.model.User
+import com.example.pharmacylist.R
+import com.example.pharmacylist.databinding.ClientHomeFragmentBinding
+import com.example.pharmacylist.model.User
 
 
 class ClientHomeFragment : Fragment() {
@@ -22,10 +21,9 @@ class ClientHomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = DataBindingUtil.inflate(inflater,R.layout.client_home_fragment,container,false)
-        val application = requireNotNull(this.activity).application
-        val dataSource = smartDataBase.getInstance(application)?.UsersDao()!!
+        //val application = requireNotNull(this.activity).application
 
-        val viewModelFactory = ClientHomeViewModelFactory(dataSource, binding ,this.requireActivity())
+        val viewModelFactory = ClientHomeViewModelFactory(binding ,this.requireActivity())
 
         val clientHomeViewModel = ViewModelProvider(this, viewModelFactory)[ClientHomeViewModel::class.java]
 
@@ -37,7 +35,7 @@ class ClientHomeFragment : Fragment() {
         clientHomeViewModel.pharmacies.observe(
             viewLifecycleOwner,  {
                 it?.let{
-                    val list = it.filter { user: User -> user.typeUser=="Pharmacist" }
+                    val list = it.filter { user: User -> user.typeUser=="Pharmacy" }
                     this.binding.recycleViewPharmacies.adapter = ListPharmacistsAdapter(activity,list)
                 }
             }
