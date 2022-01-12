@@ -52,11 +52,11 @@ class PharmacistDetailFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        binding.adresseUser.text = if(p!=null && p?.locationUser != null ) p?.locationUser.toString() else "--------"
+        binding.adresseUser.text = if(p!=null && p.locationUser != null ) p.locationUser.toString() else "--------"
 
-        binding.nameUser.text = if(p!=null && p?.nameUser != null ) p?.nameUser.toString() else "--------"
+        binding.nameUser.text = if(p!=null && p.nameUser != null ) p.nameUser.toString() else "--------"
 
-        if(p!=null && p?.photoUser !=null) Picasso.with(context).load(p?.photoUser).into(binding.photoUser);
+        if(p!=null && p.photoUser !=null) Picasso.with(context).load(p.photoUser).fit().centerInside().into(binding.photoUser);
 
         binding.buttonPhone.setOnClickListener {
             val user = p as User?
