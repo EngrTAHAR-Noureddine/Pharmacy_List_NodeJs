@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pharmacylist.client.ClientActivity
+import com.example.pharmacylist.controller.UserController.allUsers
 import com.example.pharmacylist.controller.UserController.fetchAllUsers
 import com.example.pharmacylist.databinding.LoginFragmentBinding
 import com.example.pharmacylist.model.User
@@ -21,7 +22,7 @@ class LoginViewModel(private val binding: LoginFragmentBinding,
 
     private var _email = MutableLiveData<String>()
     private var _password  = MutableLiveData<String>()
-    private var _users  = MutableLiveData<List<User>?>()
+    private var _users  = allUsers
 
 
     private var pref : SharedPreferences? = null
@@ -39,7 +40,7 @@ class LoginViewModel(private val binding: LoginFragmentBinding,
     init {
         _email.value = ""
         _password.value = ""
-        _users = fetchAllUsers()
+        fetchAllUsers()
         this.pref = context?.getSharedPreferences("firstTime", Context.MODE_PRIVATE)
         if(getData() != null && getData()!! ){
             saveData(false)

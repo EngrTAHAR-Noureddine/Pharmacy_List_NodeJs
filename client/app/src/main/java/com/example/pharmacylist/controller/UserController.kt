@@ -8,7 +8,9 @@ import retrofit2.Response
 
 object UserController {
 
-     fun fetchAllUsers(): MutableLiveData<List<User>?> {
+    var allUsers = MutableLiveData<List<User>?>()
+
+     fun fetchAllUsers() {
         val data = MutableLiveData<List<User>?>()
 
         val call = RetrofitServices.endpoint.fetchAllUsers()
@@ -33,6 +35,6 @@ object UserController {
                 data.value = null
             }
         })
-        return data
+         allUsers = data
     }
 }

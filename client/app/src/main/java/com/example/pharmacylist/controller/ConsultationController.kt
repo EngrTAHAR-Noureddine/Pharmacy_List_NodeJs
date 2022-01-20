@@ -11,7 +11,9 @@ import retrofit2.Response
 
 object ConsultationController {
 
-    fun fetchAllConsultations(): MutableLiveData<List<Consultation>?> {
+    var allConsultations = MutableLiveData<List<Consultation>?>()
+
+    fun fetchAllConsultations() {
         val data = MutableLiveData<List<Consultation>?>()
 
         val call = RetrofitServices.endpoint.fetchAllConsultations()
@@ -36,7 +38,7 @@ object ConsultationController {
                 data.value = null
             }
         })
-        return data
+        allConsultations = data
     }
 
 
