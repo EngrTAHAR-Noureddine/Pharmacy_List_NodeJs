@@ -8,13 +8,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pharmacylist.Service.RetrofitServices
 import com.example.pharmacylist.client.ClientActivity
+import com.example.pharmacylist.controller.UserController.fetchAllUsers
 import com.example.pharmacylist.databinding.LoginFragmentBinding
 import com.example.pharmacylist.model.User
 import com.google.gson.Gson
-import retrofit2.Call
-import retrofit2.Response
 
 
 class LoginViewModel(private val binding: LoginFragmentBinding,
@@ -36,33 +34,7 @@ class LoginViewModel(private val binding: LoginFragmentBinding,
         get() = _users
 
 
-    private fun fetchAllUsers():MutableLiveData<List<User>?>{
-        val data = MutableLiveData<List<User>?>()
 
-        val call = RetrofitServices.endpoint.fetchAllUsers()
-
-        call.enqueue(object : retrofit2.Callback<List<User>>{
-
-
-            override fun onResponse(
-                call: Call<List<User>>,
-                response: Response<List<User>>
-            ) {
-
-                val res = response.body()
-                if (response.code() == 200 &&  res!=null){
-                    data.value = res
-                }else{
-                    data.value = null
-                }
-            }
-
-            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                data.value = null
-            }
-        })
-        return data
-    }
 
     init {
         _email.value = ""
@@ -115,12 +87,6 @@ class LoginViewModel(private val binding: LoginFragmentBinding,
                     editorUser.apply{
                         putString("userProfile",json)
                     }.apply()
-                    /*
-                    to retrieve :
-                                Gson gson = new Gson();
-                                String json = mPrefs.getString("MyObject", "");
-                                MyObject obj = gson.fromJson(json, MyObject.class);
-                    * */
 
                         val intent = Intent(context, ClientActivity::class.java)
                         context.startActivity(intent)
