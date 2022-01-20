@@ -2,7 +2,6 @@ package com.example.pharmacylist.client.home
 
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pharmacylist.controller.UserController.allUsers
 import com.example.pharmacylist.controller.UserController.fetchAllUsers
