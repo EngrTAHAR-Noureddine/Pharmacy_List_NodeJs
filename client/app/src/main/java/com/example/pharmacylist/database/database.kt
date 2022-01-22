@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.pharmacylist.database.dao.ConsultationDao
 import com.example.pharmacylist.database.dao.UserDao
-import com.example.pharmacylist.database.models.Consultation
-import com.example.pharmacylist.database.models.User
+import com.example.pharmacylist.model.Consultation
+import com.example.pharmacylist.model.User
 
 
 @Database(entities = [User::class,Consultation::class], version = 1, exportSchema = false)

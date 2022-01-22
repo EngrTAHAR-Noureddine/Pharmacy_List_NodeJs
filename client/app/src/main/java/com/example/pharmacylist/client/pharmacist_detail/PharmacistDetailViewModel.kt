@@ -1,5 +1,6 @@
 package com.example.pharmacylist.client.pharmacist_detail
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
@@ -13,7 +14,8 @@ import com.example.pharmacylist.model.User
 import com.google.gson.Gson
 
 class PharmacistDetailViewModel(private val pharmacy: User?, private val binding: PharmacistDetailFragmentBinding
-                                , private val context : FragmentActivity
+                                , private val context : FragmentActivity,
+                                private val application : Application
 ) : ViewModel() {
 
     private lateinit var user : User
@@ -41,6 +43,7 @@ class PharmacistDetailViewModel(private val pharmacy: User?, private val binding
             if(_consultation != null && _consultation.value != null){
 
                 val consultation = Consultation(
+
                                                                 nameUser = user.nameUser,
                                                                 locationUser = user.locationUser,
                                                                 namePharmacy = pharmacy?.nameUser,
@@ -48,7 +51,7 @@ class PharmacistDetailViewModel(private val pharmacy: User?, private val binding
                                                                 consultation = _consultation.value
                                                                 )
 
-                consultationFun(consultation,context)
+                consultationFun(consultation,application)
 
             }
 

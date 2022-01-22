@@ -1,5 +1,6 @@
 package com.example.pharmacylist.login.main_login
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -11,19 +12,21 @@ import androidx.lifecycle.ViewModel
 import com.example.pharmacylist.client.ClientActivity
 import com.example.pharmacylist.controller.UserController.allUsers
 import com.example.pharmacylist.controller.UserController.fetchAllUsers
+import com.example.pharmacylist.controller.UserController.login
 import com.example.pharmacylist.databinding.LoginFragmentBinding
 import com.example.pharmacylist.model.User
 import com.google.gson.Gson
 
 
 class LoginViewModel(private val binding: LoginFragmentBinding,
-                     private val context : FragmentActivity) : ViewModel() {
+                     private val context : FragmentActivity
+                     ,private val application:Application) : ViewModel() {
 
 
     private var _email = MutableLiveData<String>()
     private var _password  = MutableLiveData<String>()
     private var _users  = allUsers
-
+    private var _user = MutableLiveData<User?>()
 
     private var pref : SharedPreferences? = null
 
@@ -40,7 +43,7 @@ class LoginViewModel(private val binding: LoginFragmentBinding,
     init {
         _email.value = ""
         _password.value = ""
-        fetchAllUsers()
+        fetchAllUsers(application)
         this.pref = context?.getSharedPreferences("firstTime", Context.MODE_PRIVATE)
         if(getData() != null && getData()!! ){
             saveData(false)
@@ -65,15 +68,38 @@ class LoginViewModel(private val binding: LoginFragmentBinding,
         _password.value = if(binding.inputPassword.text != null) binding.inputPassword.text.toString() else "none"
 
         if(binding.inputEmail.text != null && binding.inputPassword.text != null && _email.value!!.isNotEmpty() && _password.value!!.isNotEmpty()){
-            var user : User? = null
+
+            var user = User()
+            user.emailUser = _email.value
+            user.passwordUser = _password.value
+
+            login(user,context)
+
+
+        }else{
+            val text = "the _email and _password are null"
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(context, text, duration)
+            toast.show()
+        }
+
+    }
+
+
+}
+
+/*
+ var user : User? = null
 
 
             if(_users != null && _users.value != null){
+
                 for (item in _users.value!!) {
                     if(item.emailUser == _email.value && item.passwordUser == _password.value){
                         user = item
                     }
                 }
+
                 if(user != null){
                     val pref = context.getSharedPreferences("TypeUserFile", Context.MODE_PRIVATE)
                     val editor : SharedPreferences.Editor = pref.edit()
@@ -108,16 +134,7 @@ class LoginViewModel(private val binding: LoginFragmentBinding,
             }
 
 
-        }else{
-            val text = "the _email and _password are null"
-            val duration = Toast.LENGTH_SHORT
-            val toast = Toast.makeText(context, text, duration)
-            toast.show()
-        }
 
-    }
-
-
-}
+* */
 
 

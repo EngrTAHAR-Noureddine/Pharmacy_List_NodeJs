@@ -30,7 +30,10 @@ class ListConsultationsFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.list_consultations_fragment,container,false)
         binding.lifecycleOwner = this
-        val viewModelFactory = ListConsultationViewModelFactory(binding ,this.requireActivity())
+
+        val application = requireNotNull(this.activity).application
+
+        val viewModelFactory = ListConsultationViewModelFactory(binding ,this.requireActivity(),application)
 
         val clientHomeViewModel = ViewModelProvider(this, viewModelFactory)[ListConsultationsViewModel::class.java]
 

@@ -42,8 +42,9 @@ class PharmacistDetailFragment : Fragment() {
         val gson = Gson()
         val json :String = if(getData()!=null) getData()!! else ""
         val p :User? = gson.fromJson(json, User::class.java)
+        val application = requireNotNull(this.activity).application
 
-        val viewModelFactory = PharmacyDetailFragmentFactory(p,binding ,this.requireActivity())
+        val viewModelFactory = PharmacyDetailFragmentFactory(p,binding ,this.requireActivity(),application)
 
 
 

@@ -2,6 +2,7 @@ package com.example.pharmacylist.client.home
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,9 +22,9 @@ class ClientHomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = DataBindingUtil.inflate(inflater,R.layout.client_home_fragment,container,false)
-        //val application = requireNotNull(this.activity).application
+        val application = requireNotNull(this.activity).application
 
-        val viewModelFactory = ClientHomeViewModelFactory(binding ,this.requireActivity())
+        val viewModelFactory = ClientHomeViewModelFactory(binding ,this.requireActivity(),application)
 
         val clientHomeViewModel = ViewModelProvider(this, viewModelFactory)[ClientHomeViewModel::class.java]
 
@@ -32,12 +33,11 @@ class ClientHomeFragment : Fragment() {
 
         this.binding.recycleViewPharmacies.layoutManager = LinearLayoutManager(activity)
 
+        Log.v("TAG", "list pharmacie before observe")
         clientHomeViewModel.pharmacies.observe(
             viewLifecycleOwner,  {
-                it?.let{
-                    val list = it.filter { user: User -> user.typeUser=="Pharmacy" }
-                    this.binding.recycleViewPharmacies.adapter = ListPharmacistsAdapter(activity,list)
-                }
+                Log.v("TAG", "list pharmacie : ${it}")
+                this.binding.recycleViewPharmacies.adapter = ListPharmacistsAdapter(activity,it)
             }
         )
 

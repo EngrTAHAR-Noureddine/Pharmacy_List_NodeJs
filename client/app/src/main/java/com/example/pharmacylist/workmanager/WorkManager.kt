@@ -1,3 +1,4 @@
+/*
 package com.example.pharmacylist.workmanager
 
 import android.content.Context
@@ -10,3 +11,4 @@ class WorkManager(ctx: Context, params: WorkerParameters) : Worker(ctx, params) 
     }
 
 }
+*/

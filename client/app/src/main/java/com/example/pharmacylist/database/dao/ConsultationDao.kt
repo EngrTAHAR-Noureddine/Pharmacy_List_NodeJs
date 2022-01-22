@@ -5,19 +5,19 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.pharmacylist.database.models.Consultation
+import com.example.pharmacylist.model.Consultation
 
 
 @Dao
 interface ConsultationDao {
     @Insert
-    suspend fun insert(consultation: Consultation)
+    fun insert(consultation: Consultation)
 
     @Query("DELETE FROM consultation_table")
-    suspend fun clear()
+    fun clear()
 
     @Query("SELECT * FROM consultation_table")
-    fun getAllUsers(): LiveData<List<Consultation>>
+    fun getAllConsultations(): List<Consultation>
 
     @Update
     fun updateConsultation(consultation: Consultation)

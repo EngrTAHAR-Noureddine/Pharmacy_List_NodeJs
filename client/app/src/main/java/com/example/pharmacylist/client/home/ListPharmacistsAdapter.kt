@@ -2,6 +2,7 @@ package com.example.pharmacylist.client.home
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.icu.lang.UCharacter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ import com.example.pharmacylist.R
 import com.example.pharmacylist.model.User
 import com.google.gson.Gson
 
-class ListPharmacistsAdapter(val context: FragmentActivity?, var data:List<User>):
+class ListPharmacistsAdapter(val context: FragmentActivity?, var data:List<User>?):
     RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -22,19 +23,20 @@ class ListPharmacistsAdapter(val context: FragmentActivity?, var data:List<User>
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.namePharmacy.text = data[position].nameUser
-        holder.locationPharmacy.text = data[position].locationUser
+        if(data!=null){
+        holder.namePharmacy.text = data!![position].nameUser
+        holder.locationPharmacy.text = data!![position].locationUser
 
         holder.item.setOnClickListener {
 
             val pharmacy = User(
-                nameUser = data[position].nameUser,
-                locationUser = data[position].locationUser,
-                passwordUser = data[position].passwordUser,
-                emailUser = data[position].emailUser,
-                phoneUser = data[position].phoneUser,
-                photoUser = data[position].photoUser,
-                typeUser = data[position].typeUser
+                nameUser = data!![position].nameUser,
+                locationUser = data!![position].locationUser,
+                passwordUser = data!![position].passwordUser,
+                emailUser = data!![position].emailUser,
+                phoneUser = data!![position].phoneUser,
+                photoUser = data!![position].photoUser,
+                typeUser = data!![position].typeUser
             )
 
             val gson = Gson()
@@ -53,9 +55,10 @@ class ListPharmacistsAdapter(val context: FragmentActivity?, var data:List<User>
             context?.findNavController(R.id.myNavHostFragment)?.navigate(R.id.to_Client_Pharmacy_Detail)
 
         }
+        }
     }
 
-    override fun getItemCount() = data.size
+    override fun getItemCount() = if(data!=null )data!!.size else 0
 }
 
 class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {

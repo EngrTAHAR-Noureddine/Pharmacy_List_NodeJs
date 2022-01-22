@@ -19,7 +19,9 @@ class LoginFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater,R.layout.login_fragment,container,false)
 
-        val viewModelFactory = LogInViewModelFactory(binding ,this.requireActivity())
+        val application = requireNotNull(this.activity).application
+
+        val viewModelFactory = LogInViewModelFactory(binding ,this.requireActivity(),application)
         val logInViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
         binding.loginViewModel = logInViewModel
         binding.lifecycleOwner = this

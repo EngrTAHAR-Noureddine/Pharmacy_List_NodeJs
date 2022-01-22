@@ -12,6 +12,9 @@ interface EndPoints {
     @GET("api/user")
     fun fetchAllUsers(): Call<List<User>>
 
+    @POST("api/user/login")
+    fun loginUser(@Body user:User):Call<User?>
+
     @GET("api/consultation")
     fun fetchAllConsultations(): Call<List<Consultation>>
 
