@@ -40,6 +40,7 @@ object ConsultationController {
     /** Apply work manager **/
     fun applyWorkManager(application: Application){
         initWorkManager(application)
+        // the containt of network didn't work, so i removed it
         val mRequest = OneTimeWorkRequest.Builder(MyWorkManager::class.java)
             .addTag("SendUnsendConsultations").build()
         workManager.enqueue(mRequest)
