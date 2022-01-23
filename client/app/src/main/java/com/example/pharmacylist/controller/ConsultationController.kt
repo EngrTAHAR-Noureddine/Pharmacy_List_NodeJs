@@ -40,9 +40,8 @@ object ConsultationController {
     /** Apply work manager **/
     fun applyWorkManager(application: Application){
         initWorkManager(application)
-        val mConstraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
         val mRequest = OneTimeWorkRequest.Builder(MyWorkManager::class.java)
-            .addTag("SendUnsendConsultations").setConstraints(mConstraints).build()
+            .addTag("SendUnsendConsultations").build()
         workManager.enqueue(mRequest)
     }
     /** Void function to fetch consultation if internet available get from server else get from local data **/
@@ -79,7 +78,7 @@ object ConsultationController {
 
     /** void function to get unsending Consultation list **/
     fun getListOfUnsendingConsultation(context: Context){
-        unsendingConsultationsList.value = getConsultationNotSending(context as Application)
+        unsendingConsultationsList.postValue(getConsultationNotSending(context as Application))
     }
 
     /** function to send unsending consultation to the server **/
@@ -87,11 +86,8 @@ object ConsultationController {
 
         getListOfUnsendingConsultation(context)
         if(!unsendingConsultationsList.value.isNullOrEmpty()){
-
             var index =  0
-            //index.value = 0
             for (consultation in unsendingConsultationsList.value!!){
-                Log.v("LIST","list is send : ${consultation.isSend}")
                 val call = RetrofitServices.endpoint.setConsultation(consultation)
 
                 call.enqueue(object : Callback<Consultation> {

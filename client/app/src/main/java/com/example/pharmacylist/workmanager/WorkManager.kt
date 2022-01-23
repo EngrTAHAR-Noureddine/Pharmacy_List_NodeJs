@@ -2,6 +2,7 @@
 package com.example.pharmacylist.workmanager
 
 import android.content.Context
+import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.example.pharmacylist.controller.ConsultationController
@@ -12,12 +13,8 @@ import com.example.pharmacylist.controller.ConsultationController.sendUnsendCons
 
 class MyWorkManager(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
     override fun doWork(): Result {
-        getListOfUnsendingConsultation(applicationContext)
-        if(!ConsultationController.unsendingConsultationsList.value.isNullOrEmpty()){
-            sendUnsendConsultation(applicationContext)
-            return Result.success()
-        }else { cancelWorkManager()
-                return Result.failure()}
+        sendUnsendConsultation(applicationContext)
+        return Result.success()
     }
 
 }
