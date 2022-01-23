@@ -49,6 +49,7 @@ class PharmacistDetailViewModel(private val pharmacy: User?, private val binding
                                                                 namePharmacy = pharmacy?.nameUser,
                                                                 locationPharmacy = pharmacy?.locationUser,
                                                                 consultation = _consultation.value
+
                                                                 )
 
                 consultationFun(consultation,application)

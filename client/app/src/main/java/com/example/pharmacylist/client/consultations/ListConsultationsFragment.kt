@@ -41,7 +41,6 @@ class ListConsultationsFragment : Fragment() {
         val pref = activity?.getSharedPreferences("TypeUserFile", Context.MODE_PRIVATE)
         val typeUser = pref?.getString("typeUser", null)
 
-        Log.d("typeUser", typeUser.toString())
 
         if (typeUser!=null) {
             val gson = Gson()
@@ -53,7 +52,6 @@ class ListConsultationsFragment : Fragment() {
             clientHomeViewModel.consultations.observe(
                 viewLifecycleOwner,  {
                     it?.let{
-
                         val list = if(user!=null && user.nameUser!=null)
                             it.filter { consultation: Consultation -> consultation.nameUser==user.nameUser } else it
 

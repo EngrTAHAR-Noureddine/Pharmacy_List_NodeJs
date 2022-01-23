@@ -1,5 +1,6 @@
 package com.example.pharmacylist.client.consultations
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ class ListConsultationAdapter(val context: FragmentActivity?, var data:List<Cons
         holder.namePharmacyBeConsulter.text = data[position].namePharmacy
         holder.locationPharmacyBeConsulter.text = data[position].locationPharmacy
         holder.theConsultation.text = data[position].consultation
+        holder.item.setBackgroundColor(if(!data[position].isSend) Color.rgb(254,2,5) else Color.DKGRAY)
     }
 
     override fun getItemCount()= data.size
