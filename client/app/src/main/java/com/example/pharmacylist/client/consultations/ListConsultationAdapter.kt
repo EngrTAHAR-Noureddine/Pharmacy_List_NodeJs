@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pharmacylist.R
 import com.example.pharmacylist.model.Consultation
 
-class ListConsultationAdapter(val context: FragmentActivity?, var data:List<Consultation>):
+class ListConsultationAdapter(val context: FragmentActivity?, private var data:List<Consultation>):
     RecyclerView.Adapter<MyViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
@@ -31,10 +31,10 @@ class ListConsultationAdapter(val context: FragmentActivity?, var data:List<Cons
 }
 
 class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val item = view.findViewById<View>(R.id.consultingItem) as View
-    val nameUserConsulter = view.findViewById<TextView>(R.id.nameUserConsulter) as TextView
-    val locationUserConsulter = view.findViewById<TextView>(R.id.locationUserConsulter) as TextView
-    val namePharmacyBeConsulter = view.findViewById<TextView>(R.id.namePharmacyBeConsulter) as TextView
-    val locationPharmacyBeConsulter = view.findViewById<TextView>(R.id.locationPharmacyBeConsulter) as TextView
-    val theConsultation = view.findViewById<TextView>(R.id.theConsultation) as TextView
+    val item = view.findViewById(R.id.consultingItem) as View
+    val nameUserConsulter = view.findViewById(R.id.nameUserConsulter) as TextView
+    val locationUserConsulter = view.findViewById(R.id.locationUserConsulter) as TextView
+    val namePharmacyBeConsulter = view.findViewById(R.id.namePharmacyBeConsulter) as TextView
+    val locationPharmacyBeConsulter = view.findViewById(R.id.locationPharmacyBeConsulter) as TextView
+    val theConsultation = view.findViewById(R.id.theConsultation) as TextView
 }

@@ -2,7 +2,6 @@ package com.example.pharmacylist.client.home
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.icu.lang.UCharacter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import com.example.pharmacylist.R
 import com.example.pharmacylist.model.User
 import com.google.gson.Gson
 
-class ListPharmacistsAdapter(val context: FragmentActivity?, var data:List<User>?):
+class ListPharmacistsAdapter(val context: FragmentActivity?, private var data:List<User>?):
     RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -47,7 +46,7 @@ class ListPharmacistsAdapter(val context: FragmentActivity?, var data:List<User>
                 putString("pharmacyProfile",json)
             }?.apply()
 
-            val text = "you clicked on item ${json}"
+            val text = "you clicked on item $json"
             val duration = Toast.LENGTH_SHORT
             val toast = Toast.makeText(context, text, duration)
             toast.show()
@@ -62,7 +61,7 @@ class ListPharmacistsAdapter(val context: FragmentActivity?, var data:List<User>
 }
 
 class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val item = view.findViewById<View>(R.id.itemPharmacistClientHome) as View
-    val namePharmacy = view.findViewById<TextView>(R.id.Pharmacy_Name) as TextView
-    val locationPharmacy = view.findViewById<TextView>(R.id.Pharmacy_Location) as TextView
+    val item = view.findViewById(R.id.itemPharmacistClientHome) as View
+    val namePharmacy = view.findViewById(R.id.Pharmacy_Name) as TextView
+    val locationPharmacy = view.findViewById(R.id.Pharmacy_Location) as TextView
 }

@@ -2,7 +2,6 @@ package com.example.pharmacylist.client.home
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pharmacylist.R
 import com.example.pharmacylist.databinding.ClientHomeFragmentBinding
-import com.example.pharmacylist.model.User
 
 
 class ClientHomeFragment : Fragment() {
@@ -33,10 +31,9 @@ class ClientHomeFragment : Fragment() {
 
         this.binding.recycleViewPharmacies.layoutManager = LinearLayoutManager(activity)
 
-        Log.v("TAG", "list pharmacie before observe")
+
         clientHomeViewModel.pharmacies.observe(
             viewLifecycleOwner,  {
-                Log.v("TAG", "list pharmacie : ${it}")
                 this.binding.recycleViewPharmacies.adapter = ListPharmacistsAdapter(activity,it)
             }
         )

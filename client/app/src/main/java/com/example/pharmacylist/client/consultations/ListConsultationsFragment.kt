@@ -3,7 +3,6 @@ package com.example.pharmacylist.client.consultations
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,7 +51,7 @@ class ListConsultationsFragment : Fragment() {
             clientHomeViewModel.consultations.observe(
                 viewLifecycleOwner,  {
                     it?.let{
-                        val list = if(user!=null && user.nameUser!=null)
+                        val list = if(user.nameUser!=null)
                             it.filter { consultation: Consultation -> consultation.nameUser==user.nameUser } else it
 
                         this.binding.recycleView.adapter = ListConsultationAdapter(activity,list)

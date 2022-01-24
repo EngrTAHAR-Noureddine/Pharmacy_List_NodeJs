@@ -2,20 +2,17 @@ package com.example.pharmacylist.login.main_login
 
 import android.app.Application
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pharmacylist.client.ClientActivity
 import com.example.pharmacylist.controller.UserController.allUsers
 import com.example.pharmacylist.controller.UserController.fetchAllUsers
 import com.example.pharmacylist.controller.UserController.login
 import com.example.pharmacylist.databinding.LoginFragmentBinding
 import com.example.pharmacylist.model.User
-import com.google.gson.Gson
 
 
 class LoginViewModel(private val binding: LoginFragmentBinding,
@@ -87,54 +84,5 @@ class LoginViewModel(private val binding: LoginFragmentBinding,
 
 
 }
-
-/*
- var user : User? = null
-
-
-            if(_users != null && _users.value != null){
-
-                for (item in _users.value!!) {
-                    if(item.emailUser == _email.value && item.passwordUser == _password.value){
-                        user = item
-                    }
-                }
-
-                if(user != null){
-                    val pref = context.getSharedPreferences("TypeUserFile", Context.MODE_PRIVATE)
-                    val editor : SharedPreferences.Editor = pref.edit()
-                    editor.apply{
-                        putString("typeUser",user.typeUser)
-                    }.apply()
-
-                    val gson = Gson()
-                    val prefUser = context.getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
-                    val editorUser : SharedPreferences.Editor = prefUser.edit()
-                    val json = gson.toJson(user)
-                    editorUser.apply{
-                        putString("userProfile",json)
-                    }.apply()
-
-                        val intent = Intent(context, ClientActivity::class.java)
-                        context.startActivity(intent)
-                        context.finish()
-
-                }else{
-                    val text = "Users find but email and password false : ${_email.value} && ${_password.value}"
-                    val duration = Toast.LENGTH_SHORT
-                    val toast = Toast.makeText(context, text, duration)
-                    toast.show()
-                }
-
-            }else{
-                val text = "Users null "
-                val duration = Toast.LENGTH_SHORT
-                val toast = Toast.makeText(context, text, duration)
-                toast.show()
-            }
-
-
-
-* */
 
 

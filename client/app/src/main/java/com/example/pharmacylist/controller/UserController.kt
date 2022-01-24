@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
@@ -32,7 +31,7 @@ object UserController {
             ) {
                 val res = response.body()
                 if (response.code() == 200 &&  res!=null){
-                    allUsers.value = res!!
+                    allUsers.value = res
                     insertUsers(application,res)
 
                 }else{
@@ -43,22 +42,19 @@ object UserController {
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                Log.v("TAG", "i'm in fetch all users On Failure ${t}")
                 allUsers.value = fetchUsers(application)
-                Log.v("TAG", "i'm in fetch all users On Failure ${allUsers.value}")
             }
         })
     }
 
     fun login(user:User,context: FragmentActivity){
-        Log.v("TAG", "i'm in Login")
 
         val call = RetrofitServices.endpoint.loginUser(user)
 
         call.enqueue(object : retrofit2.Callback<User?>{
 
             override fun onResponse(call: Call<User?>, response: Response<User?>) {
-                Log.v("TAG", "i'm in fetch all users On response")
+
                 val res = response.body()
                 if (response.code() == 200 &&  res!=null){
                     val userFounded: User? = res
@@ -97,7 +93,7 @@ object UserController {
             }
 
             override fun onFailure(call: Call<User?>, t: Throwable) {
-                Log.v("TAG", "i'm in fetch all users On Failure")
+
                 val text = "Login Error"
                 val duration = Toast.LENGTH_SHORT
                 val toast = Toast.makeText(context, text, duration)
