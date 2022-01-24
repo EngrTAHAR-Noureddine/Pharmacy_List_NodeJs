@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.pharmacylist.client.ClientActivity
-import com.example.pharmacylist.controller.ConsultationController.applyWorkManager
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,10 +16,6 @@ class MainActivity : AppCompatActivity() {
 
         val pref = getSharedPreferences("TypeUserFile", Context.MODE_PRIVATE)
         val typeUser = pref.getString("typeUser", null)
-
-        // Call workManager
-        applyWorkManager(application)
-
 
         Log.d("typeUser", typeUser.toString())
             intent = Intent(applicationContext, ClientActivity::class.java)

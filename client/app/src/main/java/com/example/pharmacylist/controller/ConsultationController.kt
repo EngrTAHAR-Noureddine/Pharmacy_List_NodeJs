@@ -2,7 +2,6 @@ package com.example.pharmacylist.controller
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.work.*
@@ -17,6 +16,7 @@ import com.example.pharmacylist.workmanager.MyWorkManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 object ConsultationController {
 
@@ -34,14 +34,17 @@ object ConsultationController {
         workManager = WorkManager.getInstance(application)
     }
     /** Cancel work manager **/
+    /*
     fun cancelWorkManager(){
-        workManager.cancelAllWorkByTag("SendUnsendConsultations");
+        workManager.cancelAllWorkByTag("SendUnsendConsultations")
     }
+    */
     /** Apply work manager **/
     fun applyWorkManager(application: Application){
         initWorkManager(application)
-        // the containt of network didn't work, so i removed it
+        val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
         val mRequest = OneTimeWorkRequest.Builder(MyWorkManager::class.java)
+            .setConstraints(constraints).setBackoffCriteria(BackoffPolicy.LINEAR,5,TimeUnit.SECONDS)
             .addTag("SendUnsendConsultations").build()
         workManager.enqueue(mRequest)
     }
@@ -78,13 +81,12 @@ object ConsultationController {
     }
 
     /** void function to get unsending Consultation list **/
-    fun getListOfUnsendingConsultation(context: Context){
-        unsendingConsultationsList.postValue(getConsultationNotSending(context as Application))
+    private fun getListOfUnsendingConsultation(context: Context){
+        unsendingConsultationsList.value = getConsultationNotSending(context as Application)
     }
 
     /** function to send unsending consultation to the server **/
     fun sendUnsendConsultation(context:Context){
-
         getListOfUnsendingConsultation(context)
         if(!unsendingConsultationsList.value.isNullOrEmpty()){
             var index =  0
